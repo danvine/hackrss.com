@@ -1,0 +1,32 @@
+<div id="horiz">
+  <div id="inspect">
+  <h2>HACKRSS - A Visual Approach to news.ycombinator.com<br /><small><%= @cached %></small></h2>
+</div>
+<table>
+<tr>
+<% (@items.size / @rows).times do |col| %>
+<td nowrap><% @rows.times do |r| cell = (col.to_i * @rows)+r.to_i # dirty little reordering to enhance image loading %>
+<div class="t"><a href='<%= @items[cell][:url] %>'><%= @items[cell][:ss] %></a></div>
+<% end %></td>
+<% end %>
+</tr>
+</table>
+
+<script type="text/javascript">
+
+$(function() {
+  $( ".t" ).mouseenter(function() {
+    $(this).toggleClass("over");
+    $( "#inspect h2" ).html( $(this).find('img').attr('title') + "<br /><small>" + $(this).find('img').attr('data-url') + "</small>" );
+  });
+
+  // $('body').mousewheel(function(event) {
+  //   // console.log(event.deltaX, event.deltaY, event.deltaFactor);
+  //   this.scrollLeft -= (event.deltaX * 75);
+  //   event.preventDefault();
+  // });
+
+});
+</script>
+
+
