@@ -27,6 +27,7 @@ class Hackrss < Sinatra::Base
     
     @items = []
     url = 'https://news.ycombinator.com/bigrss'
+    url = 'http://feeds.pinboard.in/text/popular/?count=100'
     open(url) do |rss|
       feed = RSS::Parser.parse(rss)
       feed.items.each do |item|
@@ -38,7 +39,7 @@ class Hackrss < Sinatra::Base
           viewport: "1024x600",
           fullpage: false,
           thumbnail_max_width: 300,
-          alt: item[:title],
+          alt: item[:title]
         }
 
         item[:ss] = Url2png.new(options).img

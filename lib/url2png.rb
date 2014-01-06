@@ -26,11 +26,11 @@ class Url2png
   end
  
   def url
-    "https://#{self.base}/v6/#{apikey}/#{token}/png/?#{query_string}"
+    "#{self.base}/v6/#{apikey}/#{token}/png/?#{query_string}"
   end
  
   def img
-    "<img src='#{self.url}' class='ss' title='#{self.alt.to_s.gsub('\'','')}' data-url='#{self.target}' />"
+    "<img src='http://#{self.url}' class='ss' title='#{self.alt.to_s.gsub('\'','')}' data-url='#{self.target}' />"
   end
 
 end
