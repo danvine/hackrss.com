@@ -8,5 +8,6 @@ gem 'memcachier'
 gem 'puma'
 gem 'rack-cache'
 gem 'sinatra'
+gem 'simple-rss'
 
 gem 'shotgun', :group => :development
