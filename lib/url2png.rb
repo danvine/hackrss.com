@@ -25,6 +25,10 @@ class Url2png
 
   end
  
+ def to_s
+  self.url
+end
+
   def url
     "#{self.base}/v6/#{apikey}/#{token}/png/?#{query_string}"
   end

@@ -7,6 +7,7 @@ require 'sinatra/base'
 require 'memcachier'
 require 'dalli'
 require 'simple-rss'
+require 'cgi'
 
 require './lib/url2png'
 
@@ -28,13 +29,16 @@ class Hackrss < Sinatra::Base
 
     @items = []
     url = 'https://news.ycombinator.com/bigrss'
-    url = 'http://feeds.pinboard.in/rss/popular/?count=400'
+    # url = 'http://feeds.pinboard.in/rss/popular/?count=400'
 
     feed = SimpleRSS.parse open(url)
     feed.items.each do |item|
-      item = {title: item.title, url: item.link, comments: item.comments}
+
+      url = CGI.unescapeHTML item.link rescue item.link
+
+      item = {title: item.title, url: url, comments: item.comments}
       options = {
-        url: URI.unescape(item[:url]),
+        url: url,
         viewport: "1024x600",
         fullpage: false,
         thumbnail_max_width: 300,
