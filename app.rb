@@ -15,10 +15,10 @@ class Hackrss < Sinatra::Base
 
   $cache = Dalli::Client.new
 
-  # use Rack::Cache,
-  #   :verbose => true,
-  #   :metastore => $cache,
-  #   :entitystore => $cache
+  use Rack::Cache,
+    :verbose => true,
+    :metastore => $cache,
+    :entitystore => $cache
 
   get "/" do
     cache_control :public, :max_age => 5 * 60
