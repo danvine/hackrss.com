@@ -28,13 +28,13 @@ class Hackrss < Sinatra::Base
 
     @items = []
     url = 'https://news.ycombinator.com/bigrss'
-    # url = 'http://feeds.pinboard.in/rss/popular/?count=400'
+    url = 'http://feeds.pinboard.in/rss/popular/?count=400'
 
     feed = SimpleRSS.parse open(url)
     feed.items.each do |item|
       item = {title: item.title, url: item.link, comments: item.comments}
       options = {
-        url: item[:url],
+        url: URI.unescape(item[:url]),
         viewport: "1024x600",
         fullpage: false,
         thumbnail_max_width: 300,
