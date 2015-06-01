@@ -11,7 +11,7 @@ class Url2png
     @secret = ENV['URL2PNG_SECRET']
  
     @target = options[:url]
-    @base = options[:base] || "api.url2png.com"
+    @base = options[:base] || "beta.url2png.com"
 
     options.delete(:base) rescue nil
 
