@@ -42,7 +42,8 @@ class Hackrss < Sinatra::Base
         viewport: "1024x600",
         fullpage: false,
         thumbnail_max_width: 300,
-        alt: item[:title]
+        alt: item[:title],
+        unique: params[:unique]
       }
 
       item[:ss] = Url2png.new(options).img
