@@ -43,7 +43,8 @@ class Hackrss < Sinatra::Base
         fullpage: false,
         thumbnail_max_width: 300,
         alt: item[:title],
-        unique: params[:unique]
+        unique: params[:unique],
+        base: '107.178.240.50'
       }
 
       item[:ss] = Url2png.new(options).img
