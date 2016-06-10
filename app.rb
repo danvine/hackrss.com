@@ -40,10 +40,8 @@ class Hackrss < Sinatra::Base
       options = {
         url: url,
         viewport: "1024x600",
-        fullpage: false,
         thumbnail_max_width: 300,
         alt: item[:title],
-        unique: params[:unique],
         base: '104.154.114.8/'
       }
 
