@@ -28,7 +28,8 @@ class Hackrss < Sinatra::Base
     @session = session
 
     @items = []
-    url = 'https://news.ycombinator.com/bigrss'
+    url = params[:url]
+    url ||= 'https://news.ycombinator.com/bigrss'
     # url = 'http://feeds.pinboard.in/rss/popular/?count=400'
 
     feed = SimpleRSS.parse open(url)
