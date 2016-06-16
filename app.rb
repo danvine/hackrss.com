@@ -27,6 +27,8 @@ class Hackrss < Sinatra::Base
     @rows = 5
     @session = session
 
+    params[:unique] ||= 1
+
     @items = []
     url = params[:url]
     url ||= 'https://news.ycombinator.com/bigrss'
@@ -43,7 +45,8 @@ class Hackrss < Sinatra::Base
         viewport: "1024x600",
         thumbnail_max_width: 300,
         alt: item[:title],
-        base: '130.211.8.147/'
+        base: '130.211.8.147/',
+        unique: params[:unqiue]
       }
 
       item[:ss] = Url2png.new(options).img
